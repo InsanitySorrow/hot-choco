@@ -18,6 +18,91 @@ const MAX_REASON_LENGTH = 300;
 
 var commands = exports.commands = {
 
+	g: 'greet',
+	greet: function(target, user, room){
+		if(target === 'help') return this.sendReply('/g [name] - give an automated greeting related to the specified name. The first letter of the name is automatically made uppercase, and you can type anything as the name.');
+		if(!target) target = newestJoin;
+		var randomNumber = Math.floor(Math.random() * 7);
+		var prefix = 'The';
+		var suffix = '';
+		var suffixArray = ['Man', 'Digger', 'Klegger', 'Vild', 'Dubstep', 'er', ''];
+		switch(randomNumber){
+			case 5:
+				prefix = '';
+				break;
+			case 6:
+				prefix = 'TheManWhoDigsToBeA';
+		}
+		var greetings = ['Hey hey', 'Hey', 'Yo', 'Greetings'];
+		var randomGreeting = Math.floor(Math.random() * 4);
+
+		var random = Math.floor(Math.random() * 2);
+		var space = ' ';
+		if(random == 1){
+			space = ', ';
+		}
+		var tidy = target.substring(0, 1).toUpperCase();
+		target = target.substring(1, target.length);
+
+		var nickname = prefix + tidy + Tools.escapeHTML(target) + suffix;
+		return greetings[randomGreeting] + space + nickname + suffixArray[randomNumber] + '!';
+	},
+
+	yogacat: function(room){
+		if(!this.canBroadcast()) return;
+		this.sendReply('|raw|<img src="http://i.imgur.com/vJp9YSF.jpg" height="300" width="270">');
+	},
+
+		permaban: function(target, room, user) {
+		if (!target)
+			return this.parse('/help permaban');
+
+		target = this.splitTarget(target);
+		var targetUser = this.targetUser;
+		if (!targetUser)
+			return this.sendReply('User '+this.targetUsername+' not found.');
+		if (!this.can('ban', targetUser))
+			return false;
+		if (Users.checkBanned(targetUser.latestIp) && !target && !targetUser.connected) {
+			var problem = ' but was already banned';
+			return this.privateModCommand('('+targetUser.name+' would be executed by '+user.name+problem+'.)');
+		}
+
+		targetUser.popup(user.name+" has permanently banned you.");
+		this.addModCommand(targetUser.name+" was permanently banned by " + user.name + ".");
+		targetUser.ban();
+		fs.writeFile('logs/ipbans.txt',+'\n'+targetUser.latestIp);
+	},
+
+	hotchoco: 'hotchocolate',
+	hotchocolate: function(){
+		if(!this.canBroadcast()) return;
+		return this.send('|raw|<h1>Hot chocolate. All day. Every day.</h1><br><img src="http://damndelicious.net/wp-content/uploads/2013/12/IMG_5812edit.jpg">');
+	},
+
+	trollhotchoco: function(){
+		if(!this.canBroadcast()) return;
+		return this.send('|raw|<h1>Hot chocolate. All day. Every day.</h1><br><img src="http://i.huffpost.com/gen/858854/thumbs/o-HOT-CHOCOLATE-facebook.jpg" width="500" height="500">');
+	},
+
+	geass: function(target){
+		var targetUser = this.targetUser;
+		if(!target) return this.sendReply('No user specified.');
+		return this.send('|c|&Hey|Hey');
+	},
+
+	lick: function(target){
+		return '/me licks ' + target;
+	},
+
+	aye: function(){
+		return 'Aye';
+	},
+
+	troll: function(){
+		return '/me trolololollllooo00000000000llol';
+	},
+
 	version: function (target, room, user) {
 		if (!this.canBroadcast()) return;
 		this.sendReplyBox("Server version: <b>" + CommandParser.package.version + "</b>");
@@ -441,7 +526,7 @@ var commands = exports.commands = {
 		if (target) targetRoom = Rooms.search(target);
 		if (!targetRoom || (targetRoom !== room && targetRoom.modjoin && !user.can('bypassall'))) return this.sendReply("The room '" + target + "' does not exist.");
 		if (!targetRoom.auth) return this.sendReply("/roomauth - The room '" + (targetRoom.title ? targetRoom.title : target) + "' isn't designed for per-room moderation and therefore has no auth list.");
-		
+
 		var rankLists = {};
 		for (var u in targetRoom.auth) {
 			if (!rankLists[targetRoom.auth[u]]) rankLists[targetRoom.auth[u]] = [];
