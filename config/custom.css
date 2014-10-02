@@ -22,7 +22,17 @@ body, html{
 }
 .tabbar a.button {
 	background: #333;
-	color: #00DBB8;
+	color: #00E7C2;
 	text-shadow: 1px 2px 21px #00B497;
 	font-size: 14px;
+}
+
+.tabbar a.button.cur, .tabbar a.button.cur:hover {
+	background: #555;
+	color: #00E7C2;
+}
+
+.tabbar a.button:hover {
+	background: #414141;
+	text-shadow: 1px 2px 21px #00DAB7;
 }
