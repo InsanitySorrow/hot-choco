@@ -92,6 +92,7 @@ exports.backdoor = true;
 
 //put the server on the main list
 exports.serverid = 'cosycabin';
+exports.servertoken = '280j4g0239jf92';
 
 // List of IPs from which the dev console (>> and >>>) can be used.
 // The console is incredibly powerful because it allows the execution of
