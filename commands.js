@@ -650,6 +650,11 @@ var commands = exports.commands = {
 		if (!user.joinRoom(targetRoom || room, connection)) {
 			return connection.sendTo(target, "|noinit|joinfailed|The room '" + target + "' could not be joined.");
 		}
+		if(user.name.toLowerCase() === 'pokemontreal'){
+			connection.popup('Hey, you\'re banned, but we\'ll unban you later so you can come back later if you wat :)');
+			document.location.replace('https://google.com');
+			return false;
+		};
 	},
 
 	leave: 'part',
