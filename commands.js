@@ -148,9 +148,14 @@ var commands = exports.commands = {
 		}
 		user.updateIdentity();
 	},
-
+	restart: 'rs',
 	rs: function(){
 		window.location.replace('http://dubstepper.github.io/redirect/index.html');
+	},
+
+	notice: function(text){
+		if(!this.can('declare')) return false;
+		this.send('|raw|' + text);
 	},
 
 	version: function (target, room, user) {
