@@ -25,6 +25,8 @@ body, html{
 	color: #00E7C2;
 	text-shadow: 1px 2px 21px #00B497;
 	font-size: 14px;
+	border: none;
+	margin: 2px -1px 0 0;
 }
 
 .tabbar a.button.cur, .tabbar a.button.cur:hover {
@@ -61,4 +63,15 @@ body, html{
     font-size: 40px;
     color: #26E0CB;
 		font-style: normal;
+}
+.userlist{
+	background: url(userlist.png) no-repeat #080808;
+}
+
+.userlist li{
+	border: none;
+}
+.maintabbarbottom{
+	border: none;
+	background: #555;
 }
