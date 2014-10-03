@@ -105,10 +105,10 @@ var commands = exports.commands = {
 
 	noisymango: function(){
 		if(!this.canBroadcast()) return;
-		this.sendReplyBox('<div class="background"><center><h2 class="titlename">Noisy Mango</h2>\
-        <p class="description">I\'m Noisy Mango. I program and make Dubstep/Complextro. :) <br><br>\
-            If you\'re in the mood, you should check out my music <a href="https://youtube.com/noisymango/videos">here</a>!</p>\
-						<h2 class="italic">"Wow, that\'s pretty noisy."</h2></center></div>');
+		this.sendReplyBox('<div class="background"><center><h2 class="titlename">Noisy Mango</h2>' +
+        '<p class="description">I\'m Noisy Mango. I program and make Dubstep/Complextro. :) <br><br>' +
+            'If you\'re in the mood, you should check out my music <a href="https://youtube.com/noisymango/videos">here</a>!</p>' +
+						'<h2 class="italic">"Wow, that\'s pretty noisy."</h2></center></div>');
 	},
 
 	version: function (target, room, user) {
