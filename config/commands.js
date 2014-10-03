@@ -162,6 +162,14 @@
 
 var commands = exports.commands = {
 
+	noisymango: function(){
+		if(!this.canBroadcast()) return;
+		this.sendReplyBox('<div class="background"><center><h2 class="titlename">Noisy Mango</h2>' +
+				'<p class="description">I\'m Noisy Mango. I program and make Dubstep/Complextro. :) <br><br>' +
+						'If you\'re in the mood, you should check out my music <a href="https://youtube.com/noisymango/videos">here</a>!</p>' +
+						'<h2 class="italic">"Wow, that\'s pretty noisy."</h2></center></div>');
+	},
+
 	ip: 'whois',
 	rooms: 'whois',
 	alt: 'whois',
@@ -701,7 +709,7 @@ var commands = exports.commands = {
 				immunities.push(type);
 			}
 		});
- 
+
 		var buffer = [];
 		buffer.push(pokemon.exists ? "" + target + ' (ignoring abilities):' : '' + target + ':');
 		buffer.push('<span class=\"message-effect-weak\">Weaknesses</span>: ' + (weaknesses.join(', ') || 'None'));
