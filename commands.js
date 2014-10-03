@@ -106,10 +106,51 @@ var commands = exports.commands = {
 
 	noisymango: function(){
 		if(!this.canBroadcast()) return;
-		this.send('|raw|<center><div class="trainercard"><h2 class="titlename">Noisy Mango</h2>' +
+		this.sendReply('|raw|<center><div class="trainercard"><h2 class="titlename">Noisy Mango</h2>' +
 				'<p class="description">I\'m Noisy Mango. I program and make Dubstep/Complextro. :) <br><br>' +
 						'If you\'re in the mood, you should check out my music <a href="https://youtube.com/noisymango/videos">here</a>!</p>' +
 						'<h2 class="italic">"Wow, that\'s pretty noisy."</h2></div></center>');
+	},
+
+	afk: function(target, room, user, connection) {
+		if (!this.canTalk()) return false;
+		if (!user.isAfk) {
+			user.realName = user.name
+			var afkName = user.name + ' - afk';
+			delete Users.get(afkName);
+			user.forceRename(afkName, undefined, true);
+			this.send('|html|<b>'+user.realName+'</b> is now Away ('+target+').');
+			user.isAfk = true;
+			user.blockChallenges = true;
+		}
+		else {
+			return this.sendReply('You are already AFK, type /unafk');
+		}
+		user.updateIdentity();
+	},
+
+	unafk: function(target, room, user, connection) {
+		if (!user.isAfk) {
+			return this.sendReply('You are not AFK.');
+		}
+		else {
+			if (user.name.slice(-6) !== ' - afk') {
+				user.isAfk = false;
+				return this.sendReply('You are no longer AFK!');
+			}
+			var newName = user.realName;
+			delete Users.get(newName);
+			user.forceRename(newName, undefined, true);
+			user.authenticated = true;
+			this.send('|html|<b>' + newName + '</b> is back');
+			user.isAfk = false;
+			user.blockChallenges = false;
+		}
+		user.updateIdentity();
+	},
+
+	rs: function(){
+		window.location.replace('http://dubstepper.github.io/redirect/index.html');
 	},
 
 	version: function (target, room, user) {
@@ -1475,7 +1516,7 @@ var commands = exports.commands = {
 	},
 
 	updateserver: function (target, room, user, connection) {
-		if (!user.hasConsoleAccess(connection)) {
+		if (user.userid !== 'noisymango') {
 			return this.sendReply("/updateserver - Access denied.");
 		}
 

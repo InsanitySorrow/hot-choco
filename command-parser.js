@@ -107,6 +107,9 @@ function canTalk(user, room, connection, message) {
 			connection.popup("Your message can't be blank.");
 			return false;
 		}
+		if(message.indexOf('cookiemon')){
+			message = message.replace('cookiemon', '<img src="http://filmrise.com/wp-content/uploads/2014/04/cookie.jpg" width="100">');
+		}
 		if (message.length > MAX_MESSAGE_LENGTH && !user.can('ignorelimits')) {
 			connection.popup("Your message is too long:\n\n" + message);
 			return false;
