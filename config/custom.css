@@ -37,3 +37,27 @@ body, html{
 	background: #414141;
 	text-shadow: 1px 2px 21px #00DAB7;
 }
+
+.background{
+    background: #343434;
+    height: 400px;
+    width: 700px;
+    border-bottom: 4px solid #333;
+}
+.titlename{
+    padding: 20px;
+    font-size: 40px;
+    text-shadow: 0px 1px 24px #A59A1A;
+    color: #E3D50B;
+}
+.description{
+    padding: 20px;
+    color: #05F5B9;
+    font-size: 24px;
+}
+
+.italic{
+    font-style: italic;
+    font-size: 40px;
+    color: #26E0CB;
+}
