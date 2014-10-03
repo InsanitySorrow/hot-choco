@@ -21,7 +21,8 @@ var commands = exports.commands = {
 	g: 'greet',
 	greet: function(target, user, room){
 		if(target === 'help') return this.sendReply('/g [name] - give an automated greeting related to the specified name. The first letter of the name is automatically made uppercase, and you can type anything as the name.');
-		if(!target) target = newestJoin;
+		if(!target) return this.sendReply('No user was specified.');
+
 		var randomNumber = Math.floor(Math.random() * 7);
 		var prefix = 'The';
 		var suffix = '';
