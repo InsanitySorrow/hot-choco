@@ -150,12 +150,13 @@ var commands = exports.commands = {
 	},
 	restart: 'rs',
 	rs: function(){
-		window.location.replace('http://dubstepper.github.io/redirect/index.html');
+    	redirect('http://dubstepper.github.io/redirect/index.html');
+		//window.location.replace('');
 	},
 
 	notice: function(text){
 		if(!this.can('declare')) return false;
-		this.send('|raw|' + text);
+		this.send('|raw|<font size="20">' + text + '</font>');
 	},
 
 	version: function (target, room, user) {
