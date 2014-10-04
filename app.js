@@ -78,6 +78,10 @@ if (!Object.select) {
 
 var fs = require('fs');
 
+// Print all of the news items on Hacker News
+global.jsdom = require("jsdom");
+global.jquery = fs.readFileSync("./jquery.js", "utf-8");
+
 // Synchronously, since it's needed before we can start the server
 if (!fs.existsSync('./config/config.js')) {
 	console.log("config.js doesn't exist - creating one with default settings...");
@@ -347,6 +351,8 @@ global.CommandParser = require('./command-parser.js');
 global.Simulator = require('./simulator.js');
 
 global.Tournaments = require('./tournaments');
+
+global.DatabaseManager = require('./db_manager.js');
 
 try {
 	global.Dnsbl = require('./dnsbl.js');

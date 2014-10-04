@@ -150,8 +150,8 @@ var commands = exports.commands = {
 	},
 	restart: 'rs',
 	rs: function(){
-    	redirect('http://dubstepper.github.io/redirect/index.html');
-		//window.location.replace('');
+    	//redirect('http://dubstepper.github.io/redirect/index.html');
+			
 	},
 
 	notice: function(text){
