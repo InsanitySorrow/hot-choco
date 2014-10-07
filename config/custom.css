@@ -16,10 +16,11 @@ body, html{
 	background: #333;
 }
 
-.chat-log .notice, .chat-log .chat, .pm-log .chat {
+.chat-log .notice, .chat-log .chat, .pm-log .chat, .message {
 	padding: 4px 0 2px 0;
 	font-size: 11pt;
 	background: rgba(0, 0, 0, 0.91);
+	color: #77D6B8;
 }
 .chat-log-add{
 	border-top: 1px solid #131313;
