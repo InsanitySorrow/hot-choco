@@ -16,7 +16,7 @@ body, html{
 	background: #333;
 }
 
-.chat-log .notice, .chat-log .chat, .pm-log .chat, .message {
+.chat-log .notice, .chat-log .chat, .pm-log .chat, .message, .chat-log {
 	padding: 4px 0 2px 0;
 	font-size: 11pt;
 	background: rgba(0, 0, 0, 0.91);
