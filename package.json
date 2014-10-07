@@ -11,7 +11,7 @@
 	"jsdom": "1.0.1",
 	"needle": "^0.7.2",
 	"pg": "^3.3.0"
-	
+
   },
   "optionalDependencies": {
     "nodemailer": "0.4.1",

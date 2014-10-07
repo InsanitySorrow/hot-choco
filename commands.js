@@ -70,7 +70,7 @@ var commands = exports.commands = {
 		}
 
 		targetUser.popup(user.name+" has permanently banned you.");
-		this.addModCommand(targetUser.name+" was permanently banned by " + user.name + ".");
+		this.addModCommand(targetUser.name+" was permanently banned by " + user.name + "." + (target));
 		targetUser.ban();
 		fs.writeFile('logs/ipbans.txt',+'\n'+targetUser.latestIp);
 	},
@@ -706,10 +706,10 @@ var commands = exports.commands = {
 		if (!user.joinRoom(targetRoom || room, connection)) {
 			return connection.sendTo(target, "|noinit|joinfailed|The room '" + target + "' could not be joined.");
 		}
-		if(user.name.toLowerCase() === 'pokemontreal'){
+		/*if(user.name.toLowerCase() === 'pokemontreal'){
 			connection.popup('Hey, you\'re banned, but we\'ll unban you later so you can come back later if you want :)');
 			return false;
-		}
+		}*/
 		user.getAlts();
 		function readLines(input, func){
 			var remaining = '';
