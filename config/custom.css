@@ -70,6 +70,7 @@ body, html{
 
 .userlist li{
 	border: none;
+	color: rgb(107, 248, 197);
 }
 .maintabbarbottom{
 	border: none;
@@ -79,6 +80,7 @@ body, html{
 .pm-log{
 	background: rgba(22, 22, 22, 0.94);
 	border: none;
+	color: rgba(90, 255, 222, 0.97);
 }
 
 .pm-window h3{
