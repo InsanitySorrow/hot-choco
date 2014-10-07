@@ -75,3 +75,27 @@ body, html{
 	border: none;
 	background: #555;
 }
+
+.pm-log{
+	background: rgba(22, 22, 22, 0.94);
+	border: none;
+}
+
+.pm-window h3{
+	border: none;
+	background: rgba(36, 36, 36, 0.94);
+	color: #8038FF;
+}
+.pm-window h3:hover{
+	color: #A069FF;
+}
+.userlist li em.group{
+	color: #77F5EB;
+}
+.pm-window.pm-window.focused h3 {
+	background: #333;
+	color: #4AFAD7;
+}
+.pm-window.focused, .pm-log{
+	border: none;
+}
