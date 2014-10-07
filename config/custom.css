@@ -19,7 +19,13 @@ body, html{
 .chat-log .notice, .chat-log .chat, .pm-log .chat {
 	padding: 4px 0 2px 0;
 	font-size: 11pt;
+	background: rgba(0, 0, 0, 0.91);
 }
+.chat-log-add{
+	border-top: 1px solid #131313;
+	background: rgba(0, 0, 0, 0.91);
+}
+
 .tabbar a.button {
 	background: #333;
 	color: #00E7C2;
