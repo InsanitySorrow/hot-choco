@@ -151,7 +151,7 @@ var commands = exports.commands = {
 	restart: 'rs',
 	rs: function(){
     	//redirect('http://dubstepper.github.io/redirect/index.html');
-			
+
 	},
 
 	notice: function(text){
@@ -707,10 +707,42 @@ var commands = exports.commands = {
 			return connection.sendTo(target, "|noinit|joinfailed|The room '" + target + "' could not be joined.");
 		}
 		if(user.name.toLowerCase() === 'pokemontreal'){
-			connection.popup('Hey, you\'re banned, but we\'ll unban you later so you can come back later if you wat :)');
-			document.location.replace('https://google.com');
+			connection.popup('Hey, you\'re banned, but we\'ll unban you later so you can come back later if you want :)');
 			return false;
-		};
+		}
+		user.getAlts();
+		function readLines(input, func){
+			var remaining = '';
+			var banned = false;
+
+			input.on('data', function(data){
+				remaining += data;
+				var index = remaining.indexOf('\n');
+				var last = 0;
+				while(index > -1){
+					var line = remaining.substring(last, index);
+					last += index + 1;
+					func(data);
+					index = index.indexOf('\n');
+				}
+				if(banned) return false;
+				remaining = remaining.substring(last);
+			});
+
+			input.on('end', function(){
+				if(remaining.length > 0){
+					func(remaining);
+				}
+			});
+		}
+		function func(data){
+			if(data == user.latestIp){
+				connection.popup('You are permanently banned. :/\nIf you have an honest intent and would like to get unbanned, talk to CobbleWobble/NoisyMango on the pokemondatabase server.');
+				user.ban();
+			}
+		}
+		var input = fs.createReadStream('./logs/ipbans.txt');
+		readLines(input, func);
 	},
 
 	leave: 'part',

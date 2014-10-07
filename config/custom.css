@@ -114,3 +114,11 @@ body, html{
 	background: #333;
 	border: none;
 }
+
+a {
+	color: #EEC523;
+}
+
+.highlighted {
+	background-color: #58009C;
+}
