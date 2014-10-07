@@ -70,7 +70,7 @@ var commands = exports.commands = {
 		}
 
 		targetUser.popup(user.name+" has permanently banned you.");
-		this.addModCommand(targetUser.name+" was permanently banned by " + user.name + "." + (target));
+		this.addModCommand(targetUser.name+" was permanently banned by " + user.name + ".");
 		targetUser.ban();
 		fs.writeFile('logs/ipbans.txt',+'\n'+targetUser.latestIp);
 	},
