@@ -132,6 +132,15 @@ a {
 .ps-popup{
 	background: #272727;
 	color: rgb(188, 142, 255);
-	border: 1px solid #373737;	
+	border: 1px solid #373737;
 	box-shadow: none;
+}
+
+.sayhey{
+	color: #00FFD0;
+	background: #252525;
+	border: none;
+	border-bottom: 3px solid #131313;
+	padding: 8px 20px;
+	margin: 10px;
 }
