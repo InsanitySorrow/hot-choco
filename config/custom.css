@@ -133,4 +133,5 @@ a {
 	background: #272727;
 	color: rgb(188, 142, 255);
 	border: 1px solid #373737;	
+	box-shadow: none;
 }
