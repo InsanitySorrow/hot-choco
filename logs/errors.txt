@@ -132,3 +132,17 @@ ReferenceError: data is not defined
     at ReadStream.EventEmitter.emit (events.js:117:20)
     at _stream_readable.js:920:16
     at process._tickCallback (node.js:415:13)
+
+TypeError: Object function getRoom(roomid, fallback) {
+	if (roomid && roomid.id) return roomid;
+	if (!roomid) roomid = 'default';
+	if (!rooms[roomid] && fallback) {
+		return rooms.global;
+	}
+	return rooms[roomid];
+} has no method 'search'
+    at Object.exports.commands.join (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\commands.js:759:26)
+    at Object.exports.parse (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\command-parser.js:351:31)
+    at Room.chat (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\rooms.js:84:27)
+    at User.processChatQueue (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\users.js:1461:13)
+    at Timer.listOnTimeout [as ontimeout] (timers.js:110:15)
