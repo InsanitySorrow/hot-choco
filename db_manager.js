@@ -229,7 +229,7 @@ if(err){
 console.log('error in loading urls for filestorage');
 return;
 }
-var query = client.query('SELECT * FROM FILEURLS');
+var query = client.query('SELECT * FROM fileurls');
 var avatars = client.query(' SELECT * FROM AVATARS ');
 query.on('row',function(row){
 self.fileurls[ row.type ] = row.link;
@@ -330,7 +330,7 @@ else console.log('Chat rooms not loaded');
 fileStorage.prototype.uploadChatRooms = function(output){
 var toUpload = JSON.stringify(Rooms.global.chatRoomData).replace(/\{"title"\:/g, '\n{"title":').replace(/\]$/, '\n]');
 this.uploadToHastebin( toUpload, output ,function(link){
-DatabaseManager.Heroku.makeQuery(" UPDATE FILEURLS SET LINK = '" + link +"' WHERE TYPE='chatrooms' ");
+DatabaseManager.Heroku.makeQuery(" UPDATE fileurls SET LINK = '" + link +"' WHERE TYPE='chatrooms' ");
 });
 return;
 };
