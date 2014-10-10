@@ -143,3 +143,39 @@ a {
 	padding: 8px 20px;
 	margin: 10px;
 }
+.ps-room.ps-room-light {
+	background: rgba(29, 29, 29, 0.9);
+	color: rgb(244, 208, 26);
+}
+.roomlist a.ilink{
+	border: 1px solid #272727;
+	background: #222222;
+	text-decoration: none;
+	color: #9A71FF;
+	text-shadow: #37148B 0px -1px 0;
+	box-shadow: 1px 1px 1px #414141;
+	font-size: 15px;
+}
+
+.roomlist a.ilink:hover {
+	border: 1px solid #3A3A3A;
+	background: #313131;
+	text-decoration: none;
+	color: #A17BFF;
+}
+
+button {
+	background: #343434;
+	color: rgb(179, 119, 255);
+	border: none;
+	border-bottom: 3px solid #282828;
+	padding: 7px 10px;
+	font-size: 14px;
+}
+
+button:hover {
+	background: #373737;
+	color: rgb(186, 132, 255);
+	border: none;
+	border-bottom: 3px solid #2C2C2C;
+}
