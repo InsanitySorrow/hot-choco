@@ -83,7 +83,6 @@ body, html{
 	color: rgb(107, 248, 197);
 }
 .maintabbarbottom{
-	border: none;
 	background: #555;
 }
 
@@ -137,10 +136,10 @@ a {
 }
 
 .sayhey{
-	color: #00FFD0;
-	background: #252525;
+	color: #2AECC8;
+	background: #1F1F1F;
 	border: none;
-	border-bottom: 3px solid #131313;
+	border-bottom: 3px solid #2D2D2D;
 	padding: 8px 20px;
 	margin: 10px;
 }
