@@ -20,13 +20,13 @@ body, html{
 	padding: 4px 0 2px 0;
 	font-size: 11pt;
 }
-.chat-log{
-	background: rgba(0, 0, 0, 0.91);
+.chat-log {
+	background: rgba(0, 0, 0, 0.5);
 	color: #77D6B8;
 }
-.chat-log-add{
-	border-top: 1px solid #131313;
-	background: rgba(0, 0, 0, 0.91);
+.chat-log-add {
+	border-top: 1px solid rgba(19, 19, 19, 0.32);
+	background: rgba(0, 0, 0, 0.5);
 }
 
 .tabbar a.button {
@@ -129,13 +129,13 @@ a {
 	background: #747474;
 }
 .ps-popup{
-	background: #272727;
+	background: #222;
 	color: rgb(188, 142, 255);
 	border: 1px solid #373737;
 	box-shadow: none;
 }
 
-.sayhey{
+.sayhey, .sayhey:hover, .sayhey:active{
 	color: #2AECC8;
 	background: #1F1F1F;
 	border: none;
@@ -171,6 +171,7 @@ button {
 	border-bottom: 3px solid #282828;
 	padding: 7px 10px;
 	font-size: 14px;
+	margin: 2px;
 }
 
 button:hover {
@@ -178,4 +179,8 @@ button:hover {
 	color: rgb(186, 132, 255);
 	border: none;
 	border-bottom: 3px solid #2C2C2C;
+}
+
+.jslider .jslider-value{
+	background: rgb(45, 45, 45);	
 }
