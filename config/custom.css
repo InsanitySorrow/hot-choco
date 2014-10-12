@@ -209,3 +209,10 @@ button:hover {
 	color: #AB7AEC;
 	text-shadow: none;
 }
+.teambuilder-results .firstresult a, .teambuilder-results .firstresult a:hover{
+	border: 1px solid #5C50A5;
+	background: #424242;
+}
+.utilichart b{
+	color: #59ECBF;
+}
