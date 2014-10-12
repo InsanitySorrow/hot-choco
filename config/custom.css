@@ -199,3 +199,13 @@ button:hover {
 .select, .select:hover{
 	border: none;
 }
+.setchart{
+	border: 1px solid #9875ED;
+	background: #949494;
+	background-image: -webkit-linear-gradient(top,rgb(77, 77, 77) 10%,rgb(50, 50, 50) 55%);
+}
+.setchart label, .setchart-nickname label{
+	font-size: 9pt;
+	color: #AB7AEC;
+	text-shadow: none;
+}
