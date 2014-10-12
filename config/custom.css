@@ -182,5 +182,20 @@ button:hover {
 }
 
 .jslider .jslider-value{
-	background: rgb(45, 45, 45);	
+	background: rgb(45, 45, 45);
+}
+.utilichart .movenamecol{
+	color: #CBA0FA;
+}
+.teambuilder-results .result a:hover{
+	border: 1px solid #3E4041;
+	background: #3A3A3A;
+}
+.teambuilder-results h3, .teambuilder-results .utilichart h3{
+	text-shadow: 1px 1px 0 rgba(128, 83, 14, 0.71);
+	border: 1px solid #313435;
+	background: #212325;
+}
+.select, .select:hover{
+	border: none;
 }

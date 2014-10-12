@@ -1,5 +1,8 @@
 const messages = [
-	"didn't get a cool message because none have been added! (and you should totally suggest something cool ;))"
+	"didn't get a cool message because none have been added! (and you should totally suggest something cool ;))",
+  "inhaled a Gastly!",
+  "said 'musköy'!",
+  "put on headphones!"
 ];
 
 exports.commands = {
