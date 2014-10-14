@@ -218,3 +218,8 @@ button:hover {
 .utilichart .namecol{
 	color: #A97ED7;
 }
+
+.movemenu button.type-*{
+	color: inherit;
+	border-bottom: none;
+}
