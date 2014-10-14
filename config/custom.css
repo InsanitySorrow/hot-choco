@@ -84,6 +84,7 @@ body, html{
 }
 .maintabbarbottom{
 	background: #555;
+	border: solid 1px #555;
 }
 
 .pm-log{
@@ -222,4 +223,11 @@ button:hover {
 .movemenu button.type-*{
 	color: inherit;
 	border-bottom: none;
+}
+.setdetails, .setstats, .statrow{
+	border-bottom: none;
+	color: #000;
+}
+.header{
+	background: rgba(42, 35, 79, 0.43);
 }
