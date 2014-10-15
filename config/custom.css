@@ -231,3 +231,7 @@ button:hover {
 .header{
 	background: rgba(42, 35, 79, 0.43);
 }
+
+[data-name="~NoisyMango"] {
+	color: rgb(234, 34, 133);
+}

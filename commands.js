@@ -121,7 +121,12 @@ var commands = exports.commands = {
 			var afkName = user.name + ' - afk';
 			delete Users.get(afkName);
 			user.forceRename(afkName, undefined, true);
-			this.send('|html|<b>'+user.realName+'</b> is now Away ('+target+').');
+			if(target){
+				this.send('|html|<b>'+user.realName+'</b> is now Away ('+target+').');
+			} else {
+				this.send('|html|<b>'+user.realName+'</b> is now Away.');
+			}
+
 			user.isAfk = true;
 			user.blockChallenges = true;
 		}
