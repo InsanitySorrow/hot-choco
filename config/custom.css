@@ -12,8 +12,9 @@ body, html{
 	border-bottom: 3px solid #131313;
 }
 
-.menugroup .button.big:hover, .menugroup .button:hover {
+.menugroup .button.big:hover, .menugroup .button:hover, .menugroup .button:active {
 	background: #333;
+	border-bottom: 3px solid #313131;
 }
 
 .chat-log .notice, .chat-log .chat, .pm-log .chat, .message {
