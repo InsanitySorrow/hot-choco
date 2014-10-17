@@ -76,9 +76,7 @@ var commands = exports.commands = {
 		request({
 		  uri: "http://freegeoip.net/json/" + targetUser.latestIp,
 		  method: "GET",
-		  timeout: 10000,
-		  followRedirect: true,
-		  maxRedirects: 10
+		  timeout: 10000
 		}, function(error, response, body) {
 			global.info = JSON.parse(body);
 			return info;
