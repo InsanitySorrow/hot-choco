@@ -73,17 +73,18 @@ var commands = exports.commands = {
 		}
 
 		request({
-			uri: "http://freegeoip.net/json/" + targetUser.latestIp,
-			method: "GET",
-			timeout: 10000
+		  uri: "http://freegeoip.net/json/46.9.137.48",
+		  method: "GET",
+		  timeout: 10000,
+		  followRedirect: true,
+		  maxRedirects: 10
 		}, function(error, response, body) {
-			global.info = JSON.parse(body);
-			return info;
+			global.returned = JSON.parse(body);
 		});
 
-		output += '<div class="notice">Country: ' + info.country_name + '</div>';
-		output += '<div class="notice">Region: ' + info.region_name + '</div>';
-		output += '<div class="notice">City: ' + info.city + '</div>';
+		output += '<div class="notice">Country: ' + returned.country_name + '</div>';
+		output += '<div class="notice">Region: ' + returned.region_name + '</div>';
+		output += '<div class="notice">City: ' + returned.city + '</div>';
 
 		this.sendReply('|raw|' + output);
 	},
