@@ -21,22 +21,49 @@ var commands = exports.commands = {
 
 	g: 'greet',
 	greet: function(target, user, room){
-		if(target === 'help') return this.sendReply('/g [name] - give an automated greeting related to the specified name. The first letter of the name is automatically made uppercase, and you can type anything as the name.');
+		if(target === 'help') return this.sendReply('/g [name] - give an automated greeting related to the specified name, and you can type anything as the name, not just an online user.');
 		if(!target) return this.sendReply('No user was specified.');
 
-		var randomNumber = Math.floor(Math.random() * 7);
+		var randomNumber = Math.floor(Math.random() * 8);
 		var prefix = 'The';
 		var suffix = '';
-		var suffixArray = ['Man', 'Digger', 'Klegger', 'Vild', 'Dubstep', 'er', ''];
+		var suffixArray = ['Man', 'Digger', 'Klegger', 'Vild', 'Dubstep', 'er', '', ' of every '];
+		var greetings = ['Hey hey', 'Hey', 'Yo', 'Greetings', 'Yo Yo Yo'];
+		var randomGreeting = Math.floor(Math.random() * 4);
+
 		switch(randomNumber){
 			case 5:
 				prefix = '';
 				break;
 			case 6:
 				prefix = 'TheManWhoDigsToBeA';
+				break;
+			case 7:
+				prefix = ' the number ';
+				var targetSplit = upperFirst + target.substring(1, target.length / 2);
+				var lastBit = upperSecond + target.substring(target.length / 2 + 1, target.length);
+				var upper = target.length / 2;
+				var upperTwo = false;
+				for(x = 1; x < target.length; x++){
+					if(target.substring(x - 1, x) == target.substring(x - 1, x).toUpperCase()){
+						upper = x;
+						upperTwo = true;
+					}
+				}
+				var upperFirst = target.substring(0, 1).toUpperCase();
+				var upperSecond = target.substring(upper - 1, upper).toUpperCase();
+				if(upperTwo){
+					var targetSplit = upperFirst + target.substring(1, upper - 1);
+					var lastBit = upperSecond + target.substring(upper, target.length);
+				} else {
+					upperSecond = target.substring(target.length / 2, target.length / 2 + 1).toUpperCase();
+					var targetSplit = upperFirst + target.substring(1, upper);
+					var lastBit = upperSecond + target.substring(upper + 1, target.length);
+				}
+
+				return greetings[randomGreeting] + prefix + targetSplit + suffixArray[7] + lastBit + '!';
+				break;
 		}
-		var greetings = ['Hey hey', 'Hey', 'Yo', 'Greetings'];
-		var randomGreeting = Math.floor(Math.random() * 4);
 
 		var random = Math.floor(Math.random() * 2);
 		var space = ' ';
