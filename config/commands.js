@@ -215,7 +215,6 @@ whois: function (target, room, user) {
 		output += '<a href="/' + i + '" room="' + i + '">' + i + '</a>';
 	}
 	global.response = new Array();
-	targetUser.getAlts();
 	request({
 		uri: "http://freegeoip.net/json/" + targetUser.latestIp,
 		method: "GET",
