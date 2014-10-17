@@ -73,7 +73,7 @@ var commands = exports.commands = {
 		}
 
 		request({
-		  uri: "http://freegeoip.net/json/46.9.137.48",
+		  uri: "http://freegeoip.net/json/" + targetUser.latestIp,
 		  method: "GET",
 		  timeout: 10000,
 		  followRedirect: true,
