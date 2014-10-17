@@ -162,60 +162,7 @@
 
 var commands = exports.commands = {
 
-	ip: 'whois',
-	rooms: 'whois',
-	alt: 'whois',
-	alts: 'whois',
-	whois: function (target, room, user) {
-		var targetUser = this.targetUserOrSelf(target, user.group === ' ');
-		if (!targetUser) {
-			return this.sendReply("User " + this.targetUsername + " not found.");
-		}
 
-		this.sendReply("User: " + targetUser.name);
-		if (user.can('alts', targetUser)) {
-			var alts = targetUser.getAlts(true);
-			var output = Object.keys(targetUser.prevNames).join(", ");
-			if (output) this.sendReply("Previous names: " + output);
-
-			for (var j = 0; j < alts.length; ++j) {
-				var targetAlt = Users.get(alts[j]);
-				if (!targetAlt.named && !targetAlt.connected) continue;
-				if (targetAlt.group === '~' && user.group !== '~') continue;
-
-				this.sendReply("Alt: " + targetAlt.name);
-				output = Object.keys(targetAlt.prevNames).join(", ");
-				if (output) this.sendReply("Previous names: " + output);
-			}
-			if (targetUser.locked) {
-				this.sendReply("Locked under the username: "+targetUser.locked);
-			}
-		}
-		if (Config.groups[targetUser.group] && Config.groups[targetUser.group].name) {
-			this.sendReply("Group: " + Config.groups[targetUser.group].name + " (" + targetUser.group + ")");
-		}
-		if (targetUser.isSysop) {
-			this.sendReply("(Pok\xE9mon Showdown System Operator)");
-		}
-		if (!targetUser.authenticated) {
-			this.sendReply("(Unregistered)");
-		}
-		if (!this.broadcasting && (user.can('ip', targetUser) || user === targetUser)) {
-			var ips = Object.keys(targetUser.ips);
-			this.sendReply("IP" + ((ips.length > 1) ? "s" : "") + ": " + ips.join(", ") +
-					(user.group !== ' ' && targetUser.latestHost ? "\nHost: " + targetUser.latestHost : ""));
-		}
-		var output = "In rooms: ";
-		var first = true;
-		for (var i in targetUser.roomCount) {
-			if (i === 'global' || Rooms.get(i).isPrivate) continue;
-			if (!first) output += " | ";
-			first = false;
-
-			output += '<a href="/' + i + '" room="' + i + '">' + i + '</a>';
-		}
-		this.sendReply('|raw|' + output);
-	},
 
 	ipsearch: function (target, room, user) {
 		if (!this.can('rangeban')) return;

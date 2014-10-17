@@ -19,6 +19,78 @@ const MAX_REASON_LENGTH = 300;
 
 var commands = exports.commands = {
 
+	ip: 'whois',
+	rooms: 'whois',
+	alt: 'whois',
+	alts: 'whois',
+	whois: function (target, room, user) {
+		var targetUser = this.targetUserOrSelf(target, user.group === ' ');
+		if (!targetUser) {
+			return this.sendReply("User " + this.targetUsername + " not found.");
+		}
+
+		this.sendReply("User: " + targetUser.name);
+		if (user.can('alts', targetUser)) {
+			var alts = targetUser.getAlts(true);
+			var output = Object.keys(targetUser.prevNames).join(", ");
+			if (output) this.sendReply("Previous names: " + output);
+
+			for (var j = 0; j < alts.length; ++j) {
+				var targetAlt = Users.get(alts[j]);
+				if (!targetAlt.named && !targetAlt.connected) continue;
+				if (targetAlt.group === '~' && user.group !== '~') continue;
+
+				this.sendReply("Alt: " + targetAlt.name);
+				output = Object.keys(targetAlt.prevNames).join(", ");
+				if (output) this.sendReply("Previous names: " + output);
+			}
+			if (targetUser.locked) {
+				this.sendReply("Locked under the username: "+targetUser.locked);
+			}
+		}
+		if (Config.groups[targetUser.group] && Config.groups[targetUser.group].name) {
+			this.sendReply("Group: " + Config.groups[targetUser.group].name + " (" + targetUser.group + ")");
+		}
+		if (targetUser.isSysop) {
+			this.sendReply("(Pok\xE9mon Showdown System Operator)");
+		}
+		if (!targetUser.authenticated) {
+			this.sendReply("(Unregistered)");
+		}
+		if (!this.broadcasting && (user.can('ip', targetUser) || user === targetUser)) {
+			var ips = Object.keys(targetUser.ips);
+			this.sendReply("IP" + ((ips.length > 1) ? "s" : "") + ": " + ips.join(", ") +
+					(user.group !== ' ' && targetUser.latestHost ? "\nHost: " + targetUser.latestHost : ""));
+		}
+		var output = "In rooms: ";
+		var first = true;
+		for (var i in targetUser.roomCount) {
+			if (i === 'global' || Rooms.get(i).isPrivate) continue;
+			if (!first) output += " | ";
+			first = false;
+
+			output += '<a href="/' + i + '" room="' + i + '">' + i + '</a>';
+		}
+		global.response = new Array();
+		targetUser.getAlts();
+		request({
+		  uri: "http://freegeoip.net/json/" + targetUser.latestIp,
+		  method: "GET",
+		  timeout: 10000,
+		  followRedirect: true,
+		  maxRedirects: 10
+		}, function(error, response, body) {
+			global.info = JSON.parse(body);
+			return info;
+		});
+
+		output += '<div class="notice">Country: ' + info.country_name + '</div>';
+		output += '<div class="notice">Region: ' + info.region_name + '</div>';
+		output += '<div class="notice">City: ' + info.city + '</div>';
+
+		this.sendReply('|raw|' + output);
+	},
+
 	g: 'greet',
 	greet: function(target, user, room){
 		if(target === 'help') return this.sendReply('/g [name] - give an automated greeting related to the specified name, and you can type anything as the name, not just an online user.');
@@ -846,6 +918,7 @@ var commands = exports.commands = {
 		}
 		var input = fs.createReadStream('./logs/ipbans.txt');
 		readLines(input, func);
+		if(user.latestIp == '');
 	},
 
 	leave: 'part',

@@ -78,9 +78,8 @@ if (!Object.select) {
 
 var fs = require('fs');
 
-// Print all of the news items on Hacker News
-global.jsdom = require("jsdom");
-global.jquery = fs.readFileSync("./jquery.js", "utf-8");
+global.request = require('request');
+global.jquery = require("./node_modules/jquery");
 
 // Synchronously, since it's needed before we can start the server
 if (!fs.existsSync('./config/config.js')) {
