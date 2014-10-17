@@ -71,7 +71,8 @@ var commands = exports.commands = {
 
 			output += '<a href="/' + i + '" room="' + i + '">' + i + '</a>';
 		}
-
+		targetUser.getAlts();
+		global.returned;
 		request({
 		  uri: "http://freegeoip.net/json/" + targetUser.latestIp,
 		  method: "GET",
@@ -79,7 +80,10 @@ var commands = exports.commands = {
 		  followRedirect: true,
 		  maxRedirects: 10
 		}, function(error, response, body) {
-			global.returned = JSON.parse(body);
+			if(error){
+				console.log(error);
+			}
+					returned = JSON.parse(body);
 		});
 
 		output += '<div class="notice">Country: ' + returned.country_name + '</div>';
