@@ -71,12 +71,11 @@ var commands = exports.commands = {
 
 			output += '<a href="/' + i + '" room="' + i + '">' + i + '</a>';
 		}
-		global.response = new Array();
-		targetUser.getAlts();
+
 		request({
-		  uri: "http://freegeoip.net/json/" + targetUser.latestIp,
-		  method: "GET",
-		  timeout: 10000
+			uri: "http://freegeoip.net/json/" + targetUser.latestIp,
+			method: "GET",
+			timeout: 10000
 		}, function(error, response, body) {
 			global.info = JSON.parse(body);
 			return info;

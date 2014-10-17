@@ -625,3 +625,15 @@ TypeError: Object #<Request> has no method 'sendReply'
     at IncomingMessage.EventEmitter.emit (events.js:117:20)
     at _stream_readable.js:920:16
     at process._tickCallback (node.js:415:13)
+
+ReferenceError: info is not defined
+    at Object.exports.commands.whois (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\config\commands.js:226:46)
+    at Object.exports.parse (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\command-parser.js:351:31)
+    at Room.chat (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\rooms.js:84:27)
+    at User.chat (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\users.js:1445:9)
+    at Function.Users.socketReceive (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\users.js:308:12)
+    at Worker.<anonymous> (C:\Users\Dubsteppers\Documents\GitHub\hot-choco\sockets.js:46:11)
+    at Worker.EventEmitter.emit (events.js:98:17)
+    at ChildProcess.EventEmitter.emit (events.js:98:17)
+    at handleMessage (child_process.js:318:10)
+    at Pipe.channel.onread (child_process.js:345:11)
